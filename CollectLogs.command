@@ -20,7 +20,7 @@ echo "What is the User's IP Address? \c"
 read IPAddr
 echo "You entered an IPv4 of: $IPAddr"
 AsstIP="$IPAddr"
-SysOnline=$(ping -o $IPAddr | grep "64 bytes" | cut -c1-2)
+SysOnline=$(ping -c1 $IPAddr | grep "64 bytes" | cut -c1-2)
 
 if [ "$SysOnline" != "64" ]
 then
