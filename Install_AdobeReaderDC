@@ -1,0 +1,28 @@
+#!/bin/sh
+exec >> "/Library/Logs/Installations.log" 2>&1
+# Last modified Apr. 08, 2015, Chris Norris
+
+DATE=`date "+%A %m/%d/%Y %H:%M"`
+echo "********** $0 " `date "+%A %m/%d/%Y %H:%M:%S"` " **********"
+
+echo "Mounting AdobeReader_dc_en_ta_install.dmg"
+hdiutil attach /private/tmp/AdobeReader_dc_en_ta_install.dmg
+
+echo "Running the Adobe Acrobat Reader Installer"
+/Volumes/Adobe\ Acrobat\ Reader\ DC\ Installer/Install\ Adobe\ Acrobat\ Reader\ DC.app/Contents/MacOS/Install\ Adobe\ Acrobat\ Reader\ DC
+
+echo "Find the Install Adobe Acrobat Reader DC process... is it still running"
+FINISHED=$(ps -cx | grep Install\ Adobe\ Acrobat\ Reader\ DC)
+	
+until [[ $FINISHED -eq " " ]]
+do
+	sleep 5
+FINISHED=$(ps -cx | grep Install\ Adobe\ Acrobat\ Reader\ DC)
+done
+
+echo "The process ended, unmount the DMG:
+umount /Volumes/Adobe\ Acrobat\ Reader\ DC\ Installer
+
+echo "***************************** $0 Completed" `date "+%A %m/%d/%Y %H:%M:%S"` " **********" 
+
+exit 0
