@@ -1,0 +1,10 @@
+#!/bin/sh
+NetPort="en0"
+NetSvcs="`/usr/sbin/networksetup -listallhardwareports | grep -B1 $NetPort | cut -d : -f2`"
+
+if [ -f /usr/sbin/networksetup ]
+then
+    echo "<result>$NetSvcs</result>"
+else
+    echo "<result>No networksetup</result>"
+fi
