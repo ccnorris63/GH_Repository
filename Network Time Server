@@ -1,0 +1,11 @@
+#!/bin/sh
+desiredValue="On"
+AssgnTime="`systemsetup -getnetworktimeserver | awk '{print $4}'`"
+tmpResult="`systemsetup -getusingnetworktime | awk '{print $3}'`"
+
+if [ "$tmpResult" == "$desiredValue" ]; then
+echo "<result>$AssgnTime</result>"
+else
+echo "<result>NetTime:OFF</result>"
+fi
+exit 0
