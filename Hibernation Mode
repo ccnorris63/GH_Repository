@@ -1,0 +1,9 @@
+#!/bin/sh
+tmpResult="`/usr/bin/pmset -g | grep -w hibernatemode | awk '{print $2}'`"
+
+if [ "$tmpResult" == "" ]
+then
+    echo "<result>UnDefined</result>"
+else
+    echo "<result>$tmpResult</result>"
+fi
