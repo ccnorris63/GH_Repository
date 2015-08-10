@@ -1,0 +1,8 @@
+#!/bin/sh
+enrolled=`/usr/bin/profiles -C | awk '{print $4}' | /usr/bin/grep 0000*`
+
+if [ "$enrolled" = "" ]; then
+	echo "<result>No profileIdentifier</result>"
+else
+	echo "<result>$enrolled</result>"
+fi
