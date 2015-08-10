@@ -1,0 +1,16 @@
+#!/bin/sh
+
+for USER_HOME in /Users/*
+  do
+    USER_UID=`basename "${USER_HOME}"`
+    if [ ! "${USER_UID}" = "Shared" ] 
+    then 
+    	if [ -f "/Users/"${USER_UID}"/Library/Preferences/com.microsoft.Excel.plist" ]
+    	then
+    	    RRsult=`defaults read /Users/"${USER_UID}"/Library/Preferences/com.microsoft.Excel "14\Microsoft Excel\AutoRecoverTime"`
+    	    echo "<result>$RRsult</result>"
+    	else
+    	    echo "<result>No plist</result>"
+    	fi
+    fi
+  done
