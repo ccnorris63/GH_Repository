@@ -1,0 +1,143 @@
+#!/bin/sh
+exec >> "/Library/Logs/AppInstallation.log" 2>&1
+
+# Updated script 11-27-2013, Chris Norris
+
+echo " "
+echo "*********************************** $0" `date "+%A %m/%d/%Y %H:%M"`" *********************************"
+echo " "
+
+# define variables
+pid=`ps -ax | grep Microsoft | cut -c 1-5`
+ExistingUsers=`/usr/bin/dscl . list /Users UniqueID | awk '$2 >= 500 && $2 < 1024 { print $1; }'`
+echo "Force quit all M$ Apps..."
+kill $pid
+killall -v SyncServicesAgent
+
+# Remove the Application and common files
+echo ""
+echo "Remove the Microsoft Office 2011 folder and Communicator.app from the Applications folder:"
+rm -drfv "/Applications/Microsoft Office 2011"
+rm -drfv "/Applications/Microsoft Communicator.app"
+
+echo ""
+echo "Removing files from the /Library folder..."
+rm -drfv /Library/Automator
+rm -drfv "/Library/Application Support/Microsoft/MAU2.0"
+rm -drfv "/Library/Application Support/Microsoft/MERP2.0"
+
+echo ""
+echo "Removing the /Library/Fonts/Microsoft folder..."
+rm -drfv /Library/Fonts/Microsoft
+
+echo ""
+echo "Removing licensing files from the /Library folder…"
+rm -rfv /Library/Preferences/com.microsoft.office.licensing.plist
+rm -rfv /Library/LaunchDaemons/com.microsoft.office.licensing.helper.plist
+rm -rfv /Library/PrivilegedHelperTools/com.microsoft.office.licensing.helper.plist
+
+echo ""
+echo "Removing receipts from the /private/var/db/receipts folder..."
+rm -rfv /private/var/db/receipts/com.microsoft.mau*
+rm -rfv /private/var/db/receipts/com.microsoft.merp*
+rm -rfv /private/var/db/receipts/com.microsoft.office*
+rm -rfv /private/var/db/receipts/com.microsoft.rdc
+
+# Remove Microsoft files from each account in the Users folder
+ for USER_HOME in /Users/*
+  do
+    USER_UID=`basename "${USER_HOME}"`
+    if [ ! "${USER_UID}" = "Shared" ] 
+    then 
+    echo ""
+    echo "Renaming Users Office folder to Office.save in the Users Application Support folder to use with new install..."
+    mv -fv "/Users/workstation/Library/Application Support/Microsoft/Office" "/Users/workstation/Library/Application Support/Microsoft/Office.save"
+
+    echo ""
+    echo "Removing the Microsoft User Data folder from the Documents folder..."
+    rm -rfv "/Users/workstation/Documents/Microsoft User Data"
+
+    echo ""
+    echo "Removing files from the Users /Library/Cache folder..."
+    rm -rfv /Users/${USER_UID}/Library/Caches/com.microsoft.Excel
+    rm -rfv /Users/${USER_UID}/Library/Caches/com.microsoft.Word
+    rm -rfv /Users/${USER_UID}/Library/Caches/com.microsoft.Powerpoint
+    rm -drfv /Users/${USER_UID}/Library/Caches/Microsoft
+
+    echo ""
+    echo "Removing files from the Users Preferences folder…"
+    rm -rfv /Users/${USER_UID}/Library/Preferences/com.microsoft.autoupdate.fba.debuglogging.plist
+    rm -rfv /Users/${USER_UID}/Library/Preferences/com.microsoft.autoupdate2.plist
+    rm -rfv /Users/${USER_UID}/Library/Preferences/com.microsoft.error_reporting.plist
+    rm -rfv /Users/${USER_UID}/Library/Preferences/com.microsoft.Excel.plist
+    rm -rfv /Users/${USER_UID}/Library/Preferences/com.microsoft.office.plist
+    rm -rfv /Users/${USER_UID}/Library/Preferences/com.microsoft.outlook.databasedaemon.plist
+    rm -rfv /Users/${USER_UID}/Library/Preferences/com.microsoft.Powerpoint.plist
+    rm -rfv /Users/${USER_UID}/Library/Preferences/com.microsoft.rdc.plist
+    rm -rfv /Users/${USER_UID}/Library/Preferences/ByHost/com.microsoft.registrationDB.*
+	rm -rfv /Users/${USER_UID}/Library/Preferences/ByHost/MicrosoftRegistrationDB.*
+    rm -rfv /Users/${USER_UID}/Library/Preferences/com.microsoft.visualbasic.plist
+    rm -rfv /Users/${USER_UID}/Library/Preferences/com.microsoft.Word.plist
+	rm -drfv /Users/${USER_UID}/Library/Preferences/Microsoft
+    rm -rfv /Users/${USER_UID}/Library/Preferences/com.microsoft.autoupdate.fba.debuglogging.plist.lockfile
+    rm -rfv /Users/${USER_UID}/Library/Preferences/com.microsoft.autoupdate2.plist.lockfile
+    rm -rfv /Users/${USER_UID}/Library/Preferences/com.microsoft.error_reporting.plist.lockfile
+    rm -rfv /Users/${USER_UID}/Library/Preferences/com.microsoft.Excel.plist.lockfile
+    rm -rfv /Users/${USER_UID}/Library/Preferences/com.microsoft.office.plist.lockfile
+    rm -rfv /Users/${USER_UID}/Library/Preferences/com.microsoft.outlook.databasedaemon.plist.lockfile
+    rm -rfv /Users/${USER_UID}/Library/Preferences/com.microsoft.Powerpoint.plist.lockfile
+    rm -rfv /Users/${USER_UID}/Library/Preferences/com.microsoft.rdc.plist.lockfile
+    rm -rfv /Users/${USER_UID}/Library/Preferences/com.microsoft.visualbasic.plist.lockfile
+    rm -rfv /Users/${USER_UID}/Library/Preferences/com.microsoft.Word.plist.lockfile
+    fi
+done
+
+# Remove files from root account
+# --------------------------------------------------
+rm -drv /private/var/root/Documents/Microsoft\ User\ Data
+echo ""
+echo "Renaming Users Office folder to Office.save in the Users Application Support folder..."
+sudo mv -fv "/private/var/root/Library/Application Support/Microsoft/Office" "/private/var/root/Library/Application Support/Microsoft/Office.save"
+
+echo ""
+echo "Removing the Microsoft User Data folder from the Documents folder..."
+rm -drfv "/private/var/root/Documents/Microsoft User Data"
+
+echo ""
+echo "Removing files from the Users /Library/Cache folder..."
+rm -rfv /private/var/root/Library/Caches/com.microsoft.Excel
+rm -rfv /private/var/root/Library/Caches/com.microsoft.Word
+rm -rfv /private/var/root/Library/Caches/com.microsoft.Powerpoint
+rm -rfv /private/var/root/Library/Caches/Microsoft
+
+echo ""
+echo "Removing files from the Root account Preferences folder…"
+    rm -rfv /private/var/root/Library/Preferences/com.microsoft.autoupdate.fba.debuglogging.plist
+    rm -rfv /private/var/root/Library/Preferences/com.microsoft.autoupdate2.plist
+    rm -rfv /private/var/root/Library/Preferences/com.microsoft.error_reporting.plist
+    rm -rfv /private/var/root/Library/Preferences/com.microsoft.Excel.plist
+    rm -rfv /private/var/root/Library/Preferences/com.microsoft.office.plist
+    rm -rfv /private/var/root/Library/Preferences/com.microsoft.outlook.databasedaemon.plist
+    rm -rfv /private/var/root/Library/Preferences/com.microsoft.Powerpoint.plist
+    rm -rfv /private/var/root/Library/Preferences/com.microsoft.rdc.plist
+    rm -rfv /private/var/root/Library/Preferences/ByHost/com.microsoft.registrationDB.*
+	rm -rfv /private/var/root/Library/Preferences/ByHost/MicrosoftRegistrationDB.*
+    rm -rfv /private/var/root/Library/Preferences/com.microsoft.visualbasic.plist
+    rm -rfv /private/var/root/Library/Preferences/com.microsoft.Word.plist
+	rm -drfv /private/var/root/Library/Preferences/Microsoft
+    rm -rfv /private/var/root/Library/Preferences/com.microsoft.autoupdate.fba.debuglogging.plist.lockfile
+    rm -rfv /private/var/root/Library/Preferences/com.microsoft.autoupdate2.plist.lockfile
+    rm -rfv /private/var/root/Library/Preferences/com.microsoft.error_reporting.plist.lockfile
+    rm -rfv /private/var/root/Library/Preferences/com.microsoft.Excel.plist.lockfile
+    rm -rfv /private/var/root/Library/Preferences/com.microsoft.office.plist.lockfile
+    rm -rfv /private/var/root/Library/Preferences/com.microsoft.outlook.databasedaemon.plist.lockfile
+    rm -rfv /private/var/root/Library/Preferences/com.microsoft.Powerpoint.plist.lockfile
+    rm -rfv /private/var/root/Library/Preferences/com.microsoft.rdc.plist.lockfile
+    rm -rfv /private/var/root/Library/Preferences/com.microsoft.visualbasic.plist.lockfile
+    rm -rfv /private/var/root/Library/Preferences/com.microsoft.Word.plist.lockfile
+
+echo " "
+echo "*********************************** $0 Completed" `date "+%A %m/%d/%Y %H:%M"`" *********************************"
+echo " "
+
+exit 0
