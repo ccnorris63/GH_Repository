@@ -1,9 +1,0 @@
-#!/bin/sh
-tmpResult="`/usr/bin/pmset -g | grep -w disksleep | awk '{print $2}'`"
-
-if [ "$tmpResult" == "" ]
-then
-    echo "<result>UnDefined</result>"
-else
-    echo "<result>$tmpResult</result>"
-fi
