@@ -1,21 +1,21 @@
 #!/bin/sh
-exec  >> "/Library/Logs/Getty Installations.log" 2>&1
+exec  >> "/Library/Logs/CompanyName Installations.log" 2>&1
 # Last modified May 08, 2018, Chris Norris
 echo "********** $0" `date "+%A %m/%d/%Y %H:%M"`" **********"
 echo " "
 CurrAcct=$(logname)
 shopt -s nocasematch
 case "$CurrAcct" in
-    msealey) FMPA16Serial="31864-T92X5-X1XV8-V5T9J-XJ44J-VMV2V-TM238" ;;
-    DCarson) FMPA16Serial="36N77-89N28-JV5TN-V8J9J-X4132-93XT6-6MMMT" ;;
-    labadmin) FMPA16Serial="3MJ9N-NVN97-TJTJ6-1692T-J7KK4-V6V48-N3K6X" ;;
-    4) FMPA16Serial="3776V-M7448-VK85N-X3T3X-54T1V-7XMX9-M3552" ;;
+    username1) FMPA16Serial="123-abc" ;;
+    username2) FMPA16Serial="123-xyz" ;;
+    username3) FMPA16Serial="456-abc" ;;
+    4) FMPA16Serial="456-xyz" ;;
     *) echo "User is not on FMPro Advanced License List."; exit 1 ;;
 esac
 
 /bin/echo "AI_USERNAME=
 
-AI_ORGANIZATION=THE J. PAUL GETTY TRUST
+AI_ORGANIZATION=CompanyName
 
 AI_LICENSEKEY=$FMPA16Serial
 
@@ -42,11 +42,11 @@ AI_NOGETSTARTEDDIALOGONLAUNCH=1
 sleep 2
 sudo installer -pkg /private/tmp/FMProAdv_16/FileMaker\ Pro\ 16\ Advanced.pkg -target /
 sleep 2
-sudo installer -pkg /private/tmp/FMProAdv_16/FileMaker\ Pro\ 16.0.3.302\ Advanced\ Updates.pkg -target /
+sudo installer -pkg /private/tmp/FMProAdv_16/FileMaker\ Pro\ 169.192.222.111\ Advanced\ Updates.pkg -target /
 sleep 2
-sudo installer -pkg /private/tmp/FMProAdv_16/FileMaker\ Pro\ 16.0.4.403\ Advanced\ Updates.pkg -target /
+sudo installer -pkg /private/tmp/FMProAdv_16/FileMaker\ Pro\ 169.192.222.111\ Advanced\ Updates.pkg -target /
 sleep 2
-sudo installer -pkg /private/tmp/FMProAdv_16/FileMaker\ Pro\ 16.0.5.500\ Advanced\ Updates.pkg -target /
+sudo installer -pkg /private/tmp/FMProAdv_16/FileMaker\ Pro\ 169.192.222.111\ Advanced\ Updates.pkg -target /
 
 # Copy com.filemaker.client.pro12.save to com.filemaker.client.pro12.plist in each account
 for USER_HOME in /Users/*

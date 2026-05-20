@@ -35,7 +35,7 @@ for USER_HOME in /Users/*
 		echo "Create ZipLog User "${USER_UID}" Directory Paths:"
 		mkdir -p /Library/CompanyName/ZipLogs/"$CPUNAME"_$ZIPDATE/User_logs
 		echo "Copy ${USER_HOME} Logs to ZipLog Directories:"
-		cp -Rf ${USER_HOME}/Library/Logs/* /Library/Getty/ZipLogs/"$CPUNAME"_$ZIPDATE/User_logs
+		cp -Rf ${USER_HOME}/Library/Logs/* /Library/CompanyName/ZipLogs/"$CPUNAME"_$ZIPDATE/User_logs
 	fi
   done
 echo "Zip the $CPUNAME_$ZIPDATE folder..."
@@ -43,23 +43,23 @@ cd /Library/CompanyName/ZipLogs
 zip -r "$CPUNAME"_ziplogs_$ZIPDATE /Library/CompanyName/ZipLogs/"$CPUNAME"_$ZIPDATE
 ls -l /Library/CompanyName/ZipLogs/
 
-echo "Create Mountpoint for smb://GDLab-NAS-Villa/Macintosh_NAS_Villa:"
-if [ ! -f /Volumes/Macintosh_NAS_Villa ]
+echo "Create Mountpoint for smb://Test-NAS/Macintosh_NAS2:"
+if [ ! -f /Volumes/Macintosh_NAS2 ]
 	then 
-		mkdir /Volumes/Macintosh_NAS_Villa
+		mkdir /Volumes/Macintosh_NAS2
 fi
-echo "Mount smb://GDLab-NAS-GC:"
-mount -t smbfs //admin:pa55w0rd@153.10.222.115/Macintosh_NAS_Villa /Volumes/Macintosh_NAS_Villa
+echo "Mount smb://Test-NAS:"
+mount -t smbfs //admin:pa55w0rd@169.192.222.111/Macintosh_NAS2 /Volumes/Macintosh_NAS2
 
 echo "Copy ZipLog Package to Directories:"
-cp -rv /Library/CompanyName/ZipLogs/"$CPUNAME"_ziplogs_$ZIPDATE.zip /Volumes/Macintosh_NAS_Villa/TechSupport_Testing/ZipLogs/
+cp -rv /Library/CompanyName/ZipLogs/"$CPUNAME"_ziplogs_$ZIPDATE.zip /Volumes/Macintosh_NAS2/TechSupport_Testing/ZipLogs/
 cp -rv /Library/CompanyName/ZipLogs/"$CPUNAME"_ziplogs_$ZIPDATE.zip /Users/Shared/
-echo "Unmount /Volumes/Macintosh_NAS_Villa"
-umount /Volumes/Macintosh_NAS_Villa
+echo "Unmount /Volumes/Macintosh_NAS2"
+umount /Volumes/Macintosh_NAS2
 
 echo "@*@*@*@*@*@*@*@*@*@* $0 Completed @*@*@*@*@*@*@*@*@*@*"
 
-ZMAILTEXT="The logs from from $CPUNAME on $ZIPDATE have been zipped and copied to the GDLab-NAS-Villa in the  GDLab/Macintosh NAS/TechSupport_Testing/ZipLogs folder. Check with the Lab for a copy."
+ZMAILTEXT="The logs from from $CPUNAME on $ZIPDATE have been zipped and copied to the ITS-NAS2 in the  ITS/Macintosh NAS/TechSupport_Testing/ZipLogs folder. Check with the Lab for a copy."
 sleep 3
 for i in ${ZIPEMAIL[@]}
   do

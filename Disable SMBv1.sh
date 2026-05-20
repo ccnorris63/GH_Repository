@@ -1,5 +1,5 @@
 #!/bin/bash
-exec >> "/Library/Logs/Getty Script.log" 2>&1
+exec >> "/Library/Logs/CompanyName Script.log" 2>&1
 # Last modified June 13, 2018, Chris Norris
 /bin/echo ""
 /bin/echo "********** $0" `date "+%A %m/%d/%Y %H:%M"`" **********"

@@ -1,5 +1,5 @@
 #!/bin/sh
-exec >> "/Library/Logs/Getty Installations.log" 2>&1 
+exec >> "/Library/Logs/CompanyName Installations.log" 2>&1 
 CocoD="/Applications/Utilities/CocoaDialog.app/Contents/MacOS/CocoaDialog"
 
 # Last modified July 2, 2019, Chris Norris

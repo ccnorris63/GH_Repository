@@ -1,5 +1,5 @@
 #!/bin/sh
-exec >> "/Library/Logs/Getty Script.log" 2>&1
+exec >> "/Library/Logs/CompanyName Script.log" 2>&1
 # Last modified December 10, 2018, Chris Norris
 
 # --- computationals ---
@@ -62,10 +62,10 @@ done
 dseditgroup -o edit -a admin -t group com.apple.access_ssh
 
 # sets the proper permissions for ARD access
-echo "Remote access will now be configured for proper Getty access"
+echo "Remote access will now be configured for proper CompanyName access"
 $Kickstart -activate
 $Kickstart -configure -allowAccessFor -specifiedUsers
-$Kickstart -configure -users itslabadmin,gettytech -access -on -privs -all -clientopts -setreqperm -reqperm yes
+$Kickstart -configure -users itsadmin,Nametech -access -on -privs -all -clientopts -setreqperm -reqperm yes
 
 # Displays the hidden accounts information
 for ACCT in ${UsersCreated[@]}

@@ -43,10 +43,10 @@ do
 done
 
 # sets the proper permissions for ARD access
-echo "Remote access will now be configured for proper Getty access"
+echo "Remote access will now be configured for proper CompanyName access"
 $Kickstart -activate
 $Kickstart -configure -allowAccessFor -specifiedUsers
-$Kickstart -configure -users itslabadmin,gettytech -access -on -privs -all -clientopts -setreqperm -reqperm yes
+$Kickstart -configure -users itsadmin,itstech -access -on -privs -all -clientopts -setreqperm -reqperm yes
 
 # Displays the hidden accounts information
 for ACCT in ${UsersCreated[@]}

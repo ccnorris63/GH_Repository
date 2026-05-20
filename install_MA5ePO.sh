@@ -1,5 +1,5 @@
 #!/bin/sh
-exec >> "/Library/Logs/Getty Installations.log" 2>&1
+exec >> "/Library/Logs/CompanyName Installations.log" 2>&1
 
 DATE=`date "+%A %m/%d/%Y %H:%M"`
 echo " "

@@ -1,6 +1,6 @@
 #!/bin/sh
 #output to log
-exec >> "/Library/Logs/Getty Script.log" 2>&1 
+exec >> "/Library/Logs/CompnayName Script.log" 2>&1 
 
 # Last modified October 10, 2018, Paul Mullins
 echo " "

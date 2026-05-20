@@ -6,10 +6,10 @@ DATE=`date "+%A %m/%d/%Y %H:%M"`
 
 echo "********** $0" `date "+%A %m/%d/%Y %H:%M"`" **********"
 echo " "
-mkdir -p /Library/Getty/Markers
-touch /Library/Getty/Markers/OTW_HighSierra.txt
-echo "This system has been an OTW Upgrade" >> /Library/Getty/Markers/OTW_HighSierra.txt
-ls -l@ /Library/Getty/Markers
+mkdir -p /Library/CompanyName/Markers
+touch /Library/CompanyName/Markers/OTW_HighSierra.txt
+echo "This system has been an OTW Upgrade" >> /Library/CompanyName/Markers/OTW_HighSierra.txt
+ls -l@ /Library/CompanyName/Markers
 echo " "
 echo "Backing up the dock, desktop, and desktop.db files..."
 cp ~/Library/Application\ Support/Dock/desktoppicture.db ~/Library/Application\ Support/Dock/desktoppicture.db.backup

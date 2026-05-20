@@ -1,5 +1,5 @@
 #!/bin/sh
-exec >> print | tee "/Library/Logs/Getty Scripts.log" 2>&1 
+exec >> print | tee "/Library/Logs/CompanyName Scripts.log" 2>&1 
 
 SCRIPTNAME=$0
 

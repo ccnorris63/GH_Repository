@@ -1,10 +1,10 @@
 #!/bin/bash
-exec >> "/Library/Logs/Getty Installations.log" 2>&1
+exec >> "/Library/Logs/CompnayName Installations.log" 2>&1
 # Last modified December 10, 2018, Chris Norris
 /bin/echo ""
 /bin/echo "********** $0" `date "+%A %m/%d/%Y %H:%M"`" **********"
 /bin/echo ""
-BomgarDMG="bomgar-scc-w0dc30hz6hw5dywdiehg6zx8xg7gy86iw1y55xc408c90.dmg"
+BomgarDMG="bomgar-scc-123456789.dmg"
 i="0"
 DsktpApp="Remote Assistance.app"
 

@@ -88,7 +88,7 @@ chown -v root:wheel "$UTFolder"/System/Library/User\ Template/English.lproj/Libr
 echo "Create the UserTemplate.dmg on the Desktop using the source folder"
 hdiutil create -srcfolder /Users/$USER/Desktop/UserTemplate -volname "User Template" -fs HFS+ -fsargs "-c c=64,a=16,e=16" -format UDRW -size 10m /Users/$USER/Desktop/UserTemplate_"$date".dmg
 
-# Mark the process ending in the Getty Script.log
+# Mark the process ending in the CompanyName Script.log
 echo " "
 echo "********** $0 Complete" `date "+%A %m/%d/%Y %H:%M:%S"`" **********"
 exit 0

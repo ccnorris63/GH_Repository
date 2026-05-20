@@ -1,11 +1,11 @@
 #!/bin/sh
-exec >> "/Library/Logs/Getty Installations.log" 2>&1
+exec >> "/Library/Logs/CompanyName Installations.log" 2>&1
 
 echo " "
 echo "********** $0" `date "+%A %m/%d/%Y %H:%M"`" **********"
 echo " "
 echo "Create the Cylance token and install the Agent..."
-echo eK7mYIXuMliwZmH4WENiJIfs > /private/tmp/cyagent_install_token
+echo "placeholder" > /private/tmp/cyagent_install_token
 echo NoCylanceUI="Hidden Agent UI" >> /private/tmp/cyagent_install_token
 
 echo LogLevel=3 >> /private/tmp/cyagent_install_token
