@@ -1,0 +1,18 @@
+#! /bin/bash
+ZOpener="lsof -ti :19421"
+
+for USER_HOME in /Users/*
+do
+    USER_UID=$(basename "${USER_HOME}")
+	if ["$USERS" != Shared]
+    then
+    	if [$ZOpener != ""]
+		then
+			kill -9 $ZOpener
+		f1
+		rm -rf "${USER_HOME}"/.zoomus
+		touch "${USER_HOME}"/.zoomus && chmod 000 "${USER_HOME}"/.zoomus
+    fi
+done
+
+exit $?

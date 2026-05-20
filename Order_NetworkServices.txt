@@ -1,0 +1,35 @@
+#!/bin/zsh
+# Last modified March 24, 2022, Chris Norris
+exec >> "/Library/Logs/MAL_Scripts.log" 2>&1
+
+date=`date "+%A %m/%d/%Y"`
+echo ""
+echo "********** $0" `date "+%A %m/%d/%Y %H:%M"`" **********"
+echo "Current Network Service order:"
+networksetup -listnetworkserviceorder
+echo " "
+
+echo "Put the network service order into the NetSvcList array..."
+NetSvcList=`networksetup -listnetworkserviceorder | grep "([1-9])" | awk -F ') ' '{print $2}'`
+# NetSvcList=`/usr/sbin/networksetup -listallhardwareports | grep Hardware | awk -F ': ' '{print $2}'`
+echo "NetSvcList array:"
+echo $NetSvcList
+echo " "
+
+echo "Sort the NetSvcList into the NetSvcOrder..."
+IFS=$'\n' SortOrder=($(sort <<<"${NetSvcList[*]}"))
+NetSvcOrder=`printf '"%s" ' "${SortOrder[@]}"`
+echo $NetSvcOrder
+echo ""
+unset IFS
+
+echo "use the sorted NetSvcOrder to reorder the network services..."
+networksetup -ordernetworkservices $NetSvcOrder
+
+echo "Display the new network service order..."
+networksetup -listnetworkserviceorder
+
+echo ""
+echo "********** $0 Completed" `date "+%A %m/%d/%Y %H:%M"`" **********"
+echo ""
+exit 0 &
