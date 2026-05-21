@@ -330,7 +330,7 @@ def EmailDiscovery():
 
 	sender_email = (name + "@CompanyName.com")
 	# receivers=[ sender_email, 'user1@CompanyName.com' ]
-	receivers=[ sender_email, 'user1@CompanyName.com', 'puser2@gCompanyName.com', 'user3@CompanyName.com']
+	receivers=[ sender_email, 'user1@CompanyName.com', 'user2@gCompanyName.com', 'user3@CompanyName.com']
 
 	# Create a multipart message and set headers
 	message = EmailMessage()

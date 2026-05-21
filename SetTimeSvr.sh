@@ -1,5 +1,5 @@
 #!/bin/sh
-exec >> "/Library/Logs/Getty Script.log" 2>&1
+exec >> "/Library/Logs/CompanyName Script.log" 2>&1
 
 date=`date "+%A %m/%d/%Y"`
 echo " "

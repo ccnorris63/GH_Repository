@@ -1,5 +1,5 @@
 #!/bin/sh
-exec >> "/Library/Logs/Getty Installations.log" 2>&1
+exec >> "/Library/Logs/CompanyName Installations.log" 2>&1
 # Last updated June 19, 2018 Chris Norris
 
 SFBVER="16.18.0.51"

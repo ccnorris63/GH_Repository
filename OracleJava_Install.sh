@@ -1,5 +1,5 @@
 #!/bin/sh
-exec >> "/Library/Logs/Getty Installations.log" 2>&1
+exec >> "/Library/Logs/CompanyName Installations.log" 2>&1
 
 DATE=`date "+%A %m/%d/%Y %H:%M"`
 JUPD=212
@@ -8,7 +8,7 @@ echo "********** $0" `date "+%A %m/%d/%Y %H:%M"`" **********"
 echo "********** Java v8.0 Update $JUPD Installation **********"
 echo " "
 # Variables
-JAVAEXCPT=( "https://webconnect.getty.edu" "https://tfa.getty.edu" "http://javatester.org" )
+JAVAEXCPT=( "https://webconnect.CompanyName.com" "https://tfa.CompanyName.com" "http://javatester.org" )
 
 for USER_HOME in /Users/*
   do

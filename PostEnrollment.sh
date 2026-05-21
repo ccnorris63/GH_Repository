@@ -1,13 +1,13 @@
 #!/bin/sh
 ## postinstall
 # Prepopulate the LAPS extension Attribute
-apiURL="https://casper.getty.edu:8443"
+apiURL="https://casper.CompanyName.com:8443"
 udid=$(/usr/sbin/system_profiler SPHardwareDataType | /usr/bin/awk '/Hardware UUID:/ { print $3 }')
 xmlString="<?xml version=\"1.0\" encoding=\"UTF-8\"?><computer><extension_attributes><extension_attribute><name>LAPS</name><value>getty</value></extension_attribute></extension_attributes></computer>"
 
 /usr/bin/curl -s -f -u GDLAPS:h!gHS3cur179 -X PUT -H "Content-Type: text/xml" -d "${xmlString}" "${apiURL}/JSSResource/computers/udid/$udid"
 
-exec >> "/Library/Logs/Getty Installations.log" 2>&1 
+exec >> "/Library/Logs/CompanyName Installations.log" 2>&1 
 date=`date "+%A %m/%d/%Y"`
 echo "********** $0" `date "+%A %m/%d/%Y %H:%M"`" **********"
 echo " "
@@ -53,9 +53,9 @@ JPolicies=(
 )
 
 # *** Policy Calls & Script Execution ***
-if [ ! -e /Library/Getty/ImagingLog.txt ]
+if [ ! -e /Library/CompanyName/ImagingLog.txt ]
 then
-	touch /Library/Getty/ImagingLog.txt
+	touch /Library/CompanyName/ImagingLog.txt
 fi
 
 i=0
@@ -65,7 +65,7 @@ do
     echo "the current value of i is $i"
     /usr/local/jamf/bin/jamf policy -event ${JTriggers[i]}
     echo "********** writing to ImagingLog.txt"
-    echo "${JPolicies[i]} \t Policy called at \t" `date "+%A %m/%d/%Y %H:%M"` >> /Library/Getty/ImagingLog.txt
+    echo "${JPolicies[i]} \t Policy called at \t" `date "+%A %m/%d/%Y %H:%M"` >> /Library/CompanyName/ImagingLog.txt
     i=$[$i+1]
     echo " "
 done
@@ -117,7 +117,7 @@ echo "display a dialog indicating the end of the imaging process"
 /usr/bin/osascript -e '
 tell application "Finder"
 	activate
-    display dialog "The Getty Configuration Process has completed. Additional details can be verified in the ImagingLog.txt, jamf, Getty Installations and Script logs. RESTART the system." buttons ("Ok") default button "Ok" with title "Getty Imaging Complete"
+    display dialog "The CompanyName Configuration Process has completed. Additional details can be verified in the ImagingLog.txt, jamf, Installations and Script logs. RESTART the system." buttons ("Ok") default button "Ok" with title "Imaging Complete"
 end tell'
 
 echo "********** $0 Completed" `date "+%A %m/%d/%Y %H:%M"`" **********"

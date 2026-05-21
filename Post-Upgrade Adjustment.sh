@@ -19,11 +19,11 @@ echo "Removing the OTW Upgrade package..."
 rm -rfv /Applications/"10.12.6 Sierra Upgrade.app"
 
 echo "Removing the OTW Upgrade marker..."
-rm -fv /Library/Getty/Markers/OTW_Upgrade.txt
-rm -rfv /Library/Getty/Markers
+rm -fv /Library/CompanyName/Markers/OTW_Upgrade.txt
+rm -rfv /Library/CompanyName/Markers
 
 echo "Resetting Remote Access..."
-/Library/Getty/scripts/resetRemoteAccess.sh
+/Library/CompanyName/scripts/resetRemoteAccess.sh
 echo "Reinstalling Oracle Java..."
 /usr/local/jamf/bin/jamf policy -event OracleJava
 echo "Installing newer Onyx version..."

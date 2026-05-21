@@ -1,6 +1,6 @@
 #!/bin/sh
 
-exec >> "/Library/Logs/Getty Installations.log" 2>&1 
+exec >> "/Library/Logs/CompanyName Installations.log" 2>&1 
 date=`date "+%A %m/%d/%Y"`
 echo "********** $0" `date "+%A %m/%d/%Y %H:%M"`" **********"
 echo " "
@@ -87,7 +87,7 @@ fi
 #fi
 
 sleep 5
-if [ -f /Library/Getty/packages/JamfFrame.pkg ];then
+if [ -f /Library/CompanyName/packages/JamfFrame.pkg ];then
 	installer -pkg /Library/Getty/packages/QuickAdd.pkg -target /
 else
 	echo "There was no QuickAdd.pkg found in /Library/Getty/packages."

@@ -79,11 +79,11 @@ fi
 
 GetNetAcct() {
 # Get the network username.
-echo "Opening Getty 411 in Safari. Find the email username, same as the network username... "
+echo "Opening 411 in Safari. Find the email username, same as the network username... "
 sleep 2
 open -a /Applications/Safari.app http://go/eGuide/servlet/eGuide
 echo ""
-echo "What is the username for the email account (before the @ sign) as shown in Getty 411? "
+echo "What is the username for the email account (before the @ sign) as shown in 411? "
 echo ""
 echo "Type or copy the username here, then hit <Enter>::"
 read NETACCT
@@ -126,9 +126,9 @@ Laptop=`/usr/sbin/system_profiler SPHardwareDataType | grep "Model Name" | awk '
 printf "Laptop Value = $Laptop \n"
 if [ "$Laptop" == "MacBook" ]
 then
-	yes y | dsconfigad -a "$ComputerName" -u "$ADUser" -p "$ADUserpsswd" -ou "OU=MAC OS X,OU=workstations,DC=getty,DC=edu" -domain getty.edu packetsign require -packetencrypt ssl -mobile enable -mobileconfirm enable -localhome enable -useuncpath enable -alldomains enable
+	yes y | dsconfigad -a "$ComputerName" -u "$ADUser" -p "$ADUserpsswd" -ou "OU=MAC OS X,OU=workstations,DC=CompanyName,DC=com" -domain CompanyName.edu packetsign require -packetencrypt ssl -mobile enable -mobileconfirm enable -localhome enable -useuncpath enable -alldomains enable
 else
-	yes y | dsconfigad -a "$ComputerName" -u "$ADUser" -p "$ADUserpsswd" -ou "OU=MAC OS X,OU=workstations,DC=getty,DC=edu" -domain getty.edu packetsign require -packetencrypt ssl -localhome enable -useuncpath enable -alldomains enable
+	yes y | dsconfigad -a "$ComputerName" -u "$ADUser" -p "$ADUserpsswd" -ou "OU=MAC OS X,OU=workstations,DC=CompanyName,DC=com" -domain CompanyName.edu packetsign require -packetencrypt ssl -localhome enable -useuncpath enable -alldomains enable
 fi
 printf "Done \n"
 printf " \n"

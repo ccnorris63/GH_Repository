@@ -1,5 +1,5 @@
 #!/bin/bash
-# exec >> "/Library/Logs/Getty Script.log" 2>&1
+# exec >> "/Library/Logs/CompanyName Script.log" 2>&1
 # Last modified March 07, 2019, Chris Norris
 
 # Establish Variables
@@ -44,11 +44,11 @@ for i in ${AdptPort[@]}
 if [ $curr_wf_status == "1" ] && [ $curr_eth_status == "1" ]; then
 echo "********** $0 " `date "+%A %m/%d/%Y %H:%M:%S"` " **********"
 echo ""
-echo "!!! Ethernet connection found; Getty does not allow Dual Connections for security reseasons, Turning off Wireless !!!"
+echo "!!! Ethernet connection found; CompanyName does not allow Dual Connections for security reseasons, Turning off Wireless !!!"
 /usr/sbin/networksetup -setairportpower $WFPort off
 
 # Use applescript to display a dialog indicating wireless is being turned off
-osascript -e 'display dialog "Getty Digital does not allow dual network connections. Turning off your Wireless for now." buttons ("Ok") default button "Ok" with title "Simultaneous Ethernet and Wireless connections found!"'
+osascript -e 'display dialog "CompanyName Digital does not allow dual network connections. Turning off your Wireless for now." buttons ("Ok") default button "Ok" with title "Simultaneous Ethernet and Wireless connections found!"'
 
 echo "********** $0 Completed" `date "+%A %m/%d/%Y %H:%M:%S"` " **********"
 fi

@@ -1,5 +1,5 @@
 #!/bin/sh
-exec >> "/Library/Logs/Getty Script.log" 2>&1
+exec >> "/Library/Logs/CompanyName Script.log" 2>&1
 
 echo "********** $0" `date "+%A %m/%d/%Y %H:%M"`" **********"
 echo " "
@@ -8,8 +8,8 @@ echo " "
 
 # variables
 # ---------------------------------------------------------
-ACCT=MusIS
-GenericPW='getty'
+ACCT=DeptName
+GenericPW='CompanyName'
 
 echo "If account is already created, abort. If not, create it."
 

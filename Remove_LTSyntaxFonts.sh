@@ -1,27 +1,27 @@
 #!/bin/sh
-exec >> "/Library/Logs/Getty Installations.log" 2>&1 
+exec >> "/Library/Logs/CompanyName Installations.log" 2>&1 
 
 # Last modified May 30, 2016, Chris Norris
 echo "********** $0" `date "+%A %m/%d/%Y %H:%M"`" **********"
 echo " "
 if [ -e /Library/Fonts/LTSyntax\ Regular.ttf ];then
-echo "Location: /Library/Fonts/Getty folder"
-echo "Removing old /Library/Fonts/Getty/LTSyntax fonts ..."
+echo "Location: /Library/Fonts/CompanyName folder"
+echo "Removing old /Library/Fonts/CompanyName/LTSyntax fonts ..."
 fi
-if [ -e /Library/Fonts/Getty/LTSyntax\ Regular.ttf ];then
-rm -rfv /Library/Fonts/Getty/LTSyntax\ Regular.ttf
+if [ -e /Library/Fonts/CompanyName/LTSyntax\ Regular.ttf ];then
+rm -rfv /Library/Fonts/CompanyName/LTSyntax\ Regular.ttf
 fi
-if [ -e /Library/Fonts/Getty/LTSyntax\ OsF\ Regular.ttf ];then
-rm -rfv /Library/Fonts/Getty/LTSyntax\ OsF\ Regular.ttf
+if [ -e /Library/Fonts/CompanyName/LTSyntax\ OsF\ Regular.ttf ];then
+rm -rfv /Library/Fonts/CompanyName/LTSyntax\ OsF\ Regular.ttf
 fi
-if [ -e /Library/Fonts/Getty/LTSyntax\ Bold.ttf ];then
-rm -rfv /Library/Fonts/Getty/LTSyntax\ Bold.ttf
+if [ -e /Library/Fonts/CompanyName/LTSyntax\ Bold.ttf ];then
+rm -rfv /Library/Fonts/CompanyName/LTSyntax\ Bold.ttf
 fi
-if [ -e /Library/Fonts/Getty/LTSyntax\ OsF\ Bold.ttf ];then
-rm -rfv /Library/Fonts/Getty/LTSyntax\ OsF\ Bold.ttf
+if [ -e /Library/Fonts/CompanyName/LTSyntax\ OsF\ Bold.ttf ];then
+rm -rfv /Library/Fonts/CompanyName/LTSyntax\ OsF\ Bold.ttf
 fi
-if [ -e /Library/Fonts/Getty/LTSyntax\ Italic.ttf ];then
-rm -rfv /Library/Fonts/Getty/LTSyntax\ Italic.ttf
+if [ -e /Library/Fonts/CompanyName/LTSyntax\ Italic.ttf ];then
+rm -rfv /Library/Fonts/CompanyName/LTSyntax\ Italic.ttf
 fi
 echo " "
 if [ -e /Library/Fonts/LTSyntax\ Regular.ttf ];then

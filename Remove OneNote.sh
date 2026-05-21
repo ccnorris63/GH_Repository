@@ -1,6 +1,6 @@
 #!/bin/bash
 
-exec >> "/Library/Logs/Getty Installations.log" 2>&1
+exec >> "/Library/Logs/CompanyName Installations.log" 2>&1
 
 echo " "
 echo "********** $0" `date "+%A %m/%d/%Y %H:%M:%S"`" **********"

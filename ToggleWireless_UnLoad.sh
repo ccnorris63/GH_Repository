@@ -1,5 +1,5 @@
 #!/bin/sh
-exec >> "/Library/Logs/Getty Script.log" 2>&1
+exec >> "/Library/Logs/CompanyName Script.log" 2>&1
 
 # last updated 09/29/2017, Chris Norris
 date=`date "+%A %m/%d/%Y %H:%M"`
@@ -9,13 +9,13 @@ printf "\n"
 printf "********** $0" `date "+%A %m/%d/%Y %H:%M:%S"`" **********\n"
 printf " \n"
 
-if [[ -e /Library/LaunchAgents/edu.getty.togglewireless.plist ]]
+if [[ -e /Library/LaunchAgents/edu.CompanyName.togglewireless.plist ]]
 then
-    launchctl unload -w /Library/LaunchAgents/edu.getty.togglewireless.plist
-    rm -fv /Library/LaunchAgents/edu.getty.togglewireless.plist
-    rm -fv /Library/Getty/scripts/ToggleWireless.sh
+    launchctl unload -w /Library/LaunchAgents/edu.CompanyName.togglewireless.plist
+    rm -fv /Library/LaunchAgents/edu.CompanyName.togglewireless.plist
+    rm -fv /Library/CompanyName/scripts/ToggleWireless.sh
 else
-    printf "The edu.getty.togglewireless.plist was not found in /Library/LaunchAgents\n"
+    printf "The edu.CompanyName.togglewireless.plist was not found in /Library/LaunchAgents\n"
 fi
 printf "\n"
 printf "********** $0 Completed" `date "+%A %m/%d/%Y %H:%M:%S"`" **********\n"
