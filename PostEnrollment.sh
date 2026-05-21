@@ -2,10 +2,11 @@
 ## postinstall
 # Prepopulate the LAPS extension Attribute
 apiURL="https://casper.CompanyName.com:8443"
+psswrd=""
 udid=$(/usr/sbin/system_profiler SPHardwareDataType | /usr/bin/awk '/Hardware UUID:/ { print $3 }')
 xmlString="<?xml version=\"1.0\" encoding=\"UTF-8\"?><computer><extension_attributes><extension_attribute><name>LAPS</name><value>getty</value></extension_attribute></extension_attributes></computer>"
 
-/usr/bin/curl -s -f -u GDLAPS:h!gHS3cur179 -X PUT -H "Content-Type: text/xml" -d "${xmlString}" "${apiURL}/JSSResource/computers/udid/$udid"
+/usr/bin/curl -s -f -u GDLAPS:"$psswrd" -X PUT -H "Content-Type: text/xml" -d "${xmlString}" "${apiURL}/JSSResource/computers/udid/$udid"
 
 exec >> "/Library/Logs/CompanyName Installations.log" 2>&1 
 date=`date "+%A %m/%d/%Y"`
