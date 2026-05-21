@@ -1,0 +1,7 @@
+# AppleDouble files (meta data, resource forks)
+._*
+
+# Other commom unwanted macOS files
+.DS_Store
+.AppleDouble
+.LSOverride
